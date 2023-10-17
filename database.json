@@ -1,0 +1,79 @@
+{
+    "player": {
+        "nickname": "Gino",
+        "player_id": 0,
+        "points": 0,
+        "incorrect_answers": 0,
+        "correct_answers": 0
+    },
+
+    "answers": [
+        {
+            "player_id": 0,
+            "question_id": 0,
+            "answer": "A"
+        }
+    ],
+
+    "questions": [
+        {
+            "id": 0,
+            "topic_id": 0,
+            "question": "What event marked the end of World War II in Europe?",
+            "answer1": {
+                "text": "The fall of the Berlin Wall",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "The signing of the Armistice of Cassibile",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "The Battle of Stalingrad",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "The surrender of Nazi Germany",
+                "id": "D"
+            },
+            "correct_answer": "D",
+            "points": 10
+        }
+        
+    ],
+
+    "topics":[
+        {
+            "id": 0,
+            "name": "History"
+        },
+        {
+            "id": 1,
+            "name": "Math"
+        },
+        {
+            "id": 2,
+            "name": "Geography"
+        },
+        {
+            "id": 3,
+            "name": "Science"
+        },
+        {
+            "id": 4,
+            "name": "Music"
+        },
+        {
+            "id": 5,
+            "name": "Art"
+        },
+        {
+            "id": 6,
+            "name": "Sport"
+        },
+        {
+            "id": 7,
+            "name": "Entertainment"
+        } 
+    ]
+}
