@@ -1,12 +1,13 @@
 {
-    "player": {
-        "nickname": "Gino",
-        "player_id": 0,
-        "points": 0,
-        "incorrect_answers": 0,
-        "correct_answers": 0
-    },
-
+    "player": [
+        {
+            "nickname": "Marco",
+            "player_id": 0,
+            "points": 0,
+            "incorrect_answers": 0,
+            "correct_answers": 0
+        }
+    ],
     "answers": [
         {
             "player_id": 0,
@@ -14,7 +15,6 @@
             "answer": "A"
         }
     ],
-
     "questions": [
         {
             "id": 0,
@@ -39,10 +39,8 @@
             "correct_answer": "D",
             "points": 10
         }
-        
     ],
-
-    "topics":[
+    "topics": [
         {
             "id": 0,
             "name": "History"
@@ -74,6 +72,6 @@
         {
             "id": 7,
             "name": "Entertainment"
-        } 
+        }
     ]
 }
