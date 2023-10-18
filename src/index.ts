@@ -56,12 +56,12 @@ app.post("/questions/:questionId/answer", async (context) => {
 // fare la put che cambia il nickname del player
 app.put("/players/:playerId/nickname", async (context) => {
   const name = context.body.nickname;
-
+  const dbFile = Bun.file(DATABASE_PATH);
   const player = database.player.find(player => {
     return player.player_id == context.params.playerId
   })
 
-  if (name != undefined && player != undefined){
+  if (name && player){
     player.nickname = name;
     const updatedJson = JSON.stringify(database, null, 4);
     await Bun.write(dbFile, updatedJson)
@@ -73,7 +73,23 @@ app.put("/players/:playerId/nickname", async (context) => {
 
 })
 
+// Exercises
+// GET /questions/topics
+app.get("/questions/topics", async (context) => {
+  return database.topics;
+})
 
+
+// GET /questions/topics/{topicId}
+app.get("/questions/topics/:topicId", async (context) => {
+  let topicId = parseInt(context.params.topicId);
+
+  const questions = database.questions.filter(question => {
+    return question.topic_id == topicId;
+  })
+
+  return questions;
+})
 
 app.listen(3000)
 
