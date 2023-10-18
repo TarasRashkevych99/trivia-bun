@@ -87,11 +87,11 @@ app.get("/questions/topics", async (context) => {
 // GET /questions/topics/{topicId}
 app.get("/questions/topics/:topicId", async (context) => {
   let topicId = parseInt(context.params.topicId);
-  const topic = database.topics.filter(topic => {
-    return topic.id == topicId;
+  const questions = database.questions.filter(question => {
+    return question.topic_id == topicId;
   })
 
-  return topic;
+  return questions;
 })
 
 
