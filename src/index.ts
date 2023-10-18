@@ -1,6 +1,5 @@
 //@ts-nocheck
 import { Elysia } from "elysia";
-import { type } from "os";
 
 async function getDatabase() {
   const dbFile = Bun.file(DATABASE_PATH);
@@ -10,71 +9,72 @@ async function getDatabase() {
 const DATABASE_PATH = "database.json";
 const PLAYER_ID = 0;
 
-const app = new Elysia()
+const app = new Elysia();
 
-const database = await getDatabase()
+const database = await getDatabase();
 
-app.get("/", () => "Hello Elysia");
+app.get("/", () => "Hello from TriviaBun!");
 
 
 app.get("/questions", async (context) => {
-  return database.questions
+  return database.questions;
 })
 
 
 app.get("/questions/:questionId", async (context) => {
-  let questionId = parseInt(context.params.questionId)
+  let questionId = parseInt(context.params.questionId);
   const question = database.questions.find(question => {
-    return question.id === questionId
+    return question.id === questionId;
   })
 
-  return question
+  return question;
 })
 
 
 app.post("/questions/:questionId/answer", async (context) => {
+  const dbFile = Bun.file(DATABASE_PATH);
+
   const question = database.questions.find(question => {
-    return question.id == context.params.questionId
+    return question.id == context.params.questionId;
   })
 
   if (!question) {
-    return "Question not found"
+    return "Question not found";
   }
 
-  const answer = {
+  const answerObj = {
     player_id: PLAYER_ID,
     question_id: question.id,
-    answer: context.body.answer
-  }
+    answer: context.body.myAnswer
+  };
 
-  database.answers.push(answer)
-  
-  // Manca da creare e caricare nel database l'oggetto risposta.
-  // Ricordarsi anche di passare l'utende in qualche modo (dal body è il meno peggio)
-  // *credo sia meglio inserire un campo "isCorrect" in tutte le risposte e poi ritornare quello*
+  database.answers.push(answerObj);
 
-  return question.correct_answer === context.body.myAnswer
+  const updatedJson = JSON.stringify(database, null, 4);
+  await Bun.write(dbFile, updatedJson);
+
+  return question.correct_answer === answerObj.answer;
 })
 
 
-// fare la put che cambia il nickname del player
 app.put("/players/:playerId/nickname", async (context) => {
-  const name = context.body.nickname;
   const dbFile = Bun.file(DATABASE_PATH);
+
+  const name = context.body.nickname;
   const player = database.player.find(player => {
-    return player.player_id == context.params.playerId
+    return player.player_id == context.params.playerId;
   })
 
   if (name && player){
     player.nickname = name;
+
     const updatedJson = JSON.stringify(database, null, 4);
-    await Bun.write(dbFile, updatedJson)
+    await Bun.write(dbFile, updatedJson);
     
     return "Nickname Updated";
-  }else{
-    return "Error"
+  } else {
+    return "Error";
   }
-
 })
 
 // Exercises
@@ -87,18 +87,16 @@ app.get("/questions/topics", async (context) => {
 // GET /questions/topics/{topicId}
 app.get("/questions/topics/:topicId", async (context) => {
   let topicId = parseInt(context.params.topicId);
-
-  const questions = database.questions.filter(question => {
-    return question.topic_id == topicId;
+  const topic = database.topics.filter(topic => {
+    return topic.id == topicId;
   })
 
-  return questions;
+  return topic;
 })
 
 
 // POST /questions
 app.post("/questions", async (context) => {
-
   const dbFile = Bun.file(DATABASE_PATH);
   const new_id = database.questions[database.questions.length - 1].id + 1;
 
@@ -108,26 +106,26 @@ app.post("/questions", async (context) => {
     const new_question = {
       id: new_id,
       topic_id: 0,
-      question: context.body.question,
+      question: b.question,
       answer1: {
-        text: context.body.answerA,
+        text: b.answerA,
         id: "A"
       },
       answer2: {
-        text: context.body.answerB,
+        text: b.answerB,
         id: "B"
       },
       answer3: {
-        text: context.body.answerC,
+        text: b.answerC,
         id: "C"
       },
       answer4: {
-        text: context.body.answerD,
+        text: b.answerD,
         id: "D"
       },
-      correct_answer: context.body.correct_answer,
-      points: context.body.points
-    }
+      correct_answer: b.correct_answer,
+      points: b.points
+    };
 
     database.questions.push(new_question);
 
@@ -135,11 +133,9 @@ app.post("/questions", async (context) => {
     await Bun.write(dbFile, updatedJson);
 
     return true;
-    
-  }else{
+  } else {
     return false;
   }
-
 })
 
 
@@ -147,7 +143,7 @@ app.post("/questions", async (context) => {
 app.put("/questions/:questionId", async (context) => {
   const dbFile = Bun.file(DATABASE_PATH);
   const question = database.questions.find(question => {
-    return question.id == context.params.questionId
+    return question.id == context.params.questionId;
   })
 
   const b = context.body;
@@ -161,12 +157,12 @@ app.put("/questions/:questionId", async (context) => {
   if (b.points) question.points = b.points;
   
   const updatedJson = JSON.stringify(database, null, 4);
-  await Bun.write(dbFile, updatedJson)
+  await Bun.write(dbFile, updatedJson);
 
 })
 
-app.listen(3000)
+app.listen(3000);
 
 console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+  `TriviaBun is running at ${app.server?.hostname}:${app.server?.port}`
 );
