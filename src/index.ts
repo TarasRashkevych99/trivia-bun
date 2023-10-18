@@ -16,9 +16,11 @@ const database = await getDatabase()
 
 app.get("/", () => "Hello Elysia");
 
+
 app.get("/questions", async (context) => {
   return database.questions
 })
+
 
 app.get("/questions/:questionId", async (context) => {
   let questionId = parseInt(context.params.questionId)
@@ -28,6 +30,7 @@ app.get("/questions/:questionId", async (context) => {
 
   return question
 })
+
 
 app.post("/questions/:questionId/answer", async (context) => {
   const question = database.questions.find(question => {
@@ -52,6 +55,7 @@ app.post("/questions/:questionId/answer", async (context) => {
 
   return question.correct_answer === context.body.myAnswer
 })
+
 
 // fare la put che cambia il nickname del player
 app.put("/players/:playerId/nickname", async (context) => {
@@ -89,6 +93,76 @@ app.get("/questions/topics/:topicId", async (context) => {
   })
 
   return questions;
+})
+
+
+// POST /questions
+app.post("/questions", async (context) => {
+
+  const dbFile = Bun.file(DATABASE_PATH);
+  const new_id = database.questions[database.questions.length - 1].id + 1;
+
+  const b = context.body;
+  if(b.question && b.answerA && b.answerB && b.answerC && b.answerD && b.correct_answer && b.points){
+
+    const new_question = {
+      id: new_id,
+      topic_id: 0,
+      question: context.body.question,
+      answer1: {
+        text: context.body.answerA,
+        id: "A"
+      },
+      answer2: {
+        text: context.body.answerB,
+        id: "B"
+      },
+      answer3: {
+        text: context.body.answerC,
+        id: "C"
+      },
+      answer4: {
+        text: context.body.answerD,
+        id: "D"
+      },
+      correct_answer: context.body.correct_answer,
+      points: context.body.points
+    }
+
+    database.questions.push(new_question);
+
+    const updatedJson = JSON.stringify(database, null, 4);
+    await Bun.write(dbFile, updatedJson);
+
+    return true;
+    
+  }else{
+    return false;
+  }
+
+})
+
+
+// Assignment
+app.put("/questions/:questionId", async (context) => {
+  const dbFile = Bun.file(DATABASE_PATH);
+  const question = database.questions.find(question => {
+    return question.id == context.params.questionId
+  })
+
+  const b = context.body;
+  if (b.topic_id) question.topic_id = b.topic_id;
+  if (b.question) question.question = b.question;
+  if (b.answerA) question.answer1.text = b.answerA;
+  if (b.answerB) question.answer2.text = b.answerB;
+  if (b.answerC) question.answer3.text = b.answerC;
+  if (b.answerD)question.answer4.text = b.answerD;
+  if (b.correct_answer) question.correct_answer = b.correct_answer;
+  if (b.points) question.points = b.points;
+  
+  const updatedJson = JSON.stringify(database, null, 4);
+  await Bun.write(dbFile, updatedJson)
+
 })
 
 app.listen(3000)
