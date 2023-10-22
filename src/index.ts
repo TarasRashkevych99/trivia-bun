@@ -18,7 +18,7 @@ app.get("/questions", async (context) => {
 
 
 app.get("/questions/:questionId", async (context) => {
-  // parseInt() converts a string to an integer
+  // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
 
   // find() returns the first question that satisfies the condition
@@ -37,7 +37,7 @@ app.get("/questions/:questionId", async (context) => {
 
 
 app.post("/questions/:questionId/answer", async (context) => {
-  // parseInt() converts a string to an integer
+  // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
   // find() returns the first question that satisfies the condition
   const question = database.questions.find(question => question.id === questionId)
@@ -64,7 +64,7 @@ app.post("/questions/:questionId/answer", async (context) => {
   const answerObj = {
     player_id: PLAYER_ID,
     question_id: question.id,
-    answer: context.body.answer
+    answer: context.body.answer // context.body.answer is the answer passed in the request body
   };
 
   database.answers.push(answerObj);
@@ -76,7 +76,7 @@ app.post("/questions/:questionId/answer", async (context) => {
 
 
 app.put("/players/:playerId/nickname", async (context) => {
-  // parseInt() converts a string to an integer
+  // parseInt() converts the playerId parameter from url to an integer
   let playerId = parseInt(context.params.playerId);
 
   // find() returns the first player that satisfies the condition
@@ -90,7 +90,7 @@ app.put("/players/:playerId/nickname", async (context) => {
     return "Player not found";
   }
 
-  const name = context.body?.nickname;
+  const name = context.body?.nickname; // context.body.nickname is the nickname passed in the request body
 
   // If the name is not passed in the body, return a 400 status code and a message
   if (!name) {
@@ -114,7 +114,7 @@ app.get("/questions/topics", async (context) => {
 
 
 app.get("/questions/topics/:topicId", async (context) => {
-  // parseInt() converts a string to an integer
+  // parseInt() converts the topicId parameter from url to an integer
   let topicId = parseInt(context.params.topicId);
 
   // filter() returns all questions that belong to the topic
@@ -182,7 +182,7 @@ app.post("/questions", async (context) => {
 //===== Assignment =====//
 
 app.put("/questions/:questionId", async (context) => {
-  // parseInt() converts a string to an integer
+  // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
   
   const question = database.questions.find(question => {
