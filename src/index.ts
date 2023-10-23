@@ -22,9 +22,9 @@ app.get("/questions/:questionId", async (context) => {
   let questionId = parseInt(context.params.questionId);
 
   // find() returns the first question that satisfies the condition
-  const question = database.questions.find(question => {
-    return question.id === questionId;
-  })
+  const question = database.questions.find(question => 
+    question.id === questionId
+  )
 
   // If the question is not found, return a 404 status code and a message
   if (!question) {
@@ -40,10 +40,10 @@ app.post("/questions/:questionId/answer", async (context) => {
   // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
   // find() returns the first question that satisfies the condition
-  const question = database.questions.find(question => {
+  const question = database.questions.find(question => 
     question.id === questionId
-  })
-
+  )
+  
   // If the question is not found, return a 404 status code and a message
   if (!question) {
     context.set.status = 404;
@@ -51,10 +51,10 @@ app.post("/questions/:questionId/answer", async (context) => {
   }
 
   // find() returns the first answer that satisfies the condition
-  const answer = database.answers.find(answer => {
+  const answer = database.answers.find(answer => 
     answer.question_id === question.id && 
     answer.player_id === PLAYER_ID
-  });
+  );
 
   // If the player has already answered this question, return a 400 status code and a message
   if (answer) {
@@ -70,28 +70,27 @@ app.post("/questions/:questionId/answer", async (context) => {
     date: getTimestamp()
   };
 
-
   database.answers.push(answerObj);
 
-  await updateDatabase(database);
-
-  const player = database.players.find(player => {
+  const player = database.player.find(player =>
     player.id === PLAYER_ID
-  });
+  );
 
   if (!player){
     context.set.status = 404;
     return "Player not found";
   }
   else{
-
+    let res;
     if(question.correct_answer === answerObj.answer){
       player.points += question.points
-      return "Correct answer! You gained " + question.points + " points"; // implicit 200 status code
+      res = "Correct answer! You gained " + question.points + " points"; // implicit 200 status code
     }
     else{
-      return "Incorrect answer! Try with the next one"; // implicit 200 status code
+      res = "Incorrect answer! Try with the next one"; // implicit 200 status code
     }
+    await updateDatabase(database);
+    return res;
   }
 
 })
@@ -102,9 +101,9 @@ app.put("/players/:playerId/nickname", async (context) => {
   let playerId = parseInt(context.params.playerId);
 
   // find() returns the first player that satisfies the condition
-  const player = database.player.find(player => {
-    return player.player_id === playerId;
-  })
+  const player = database.player.find(player =>
+    player.id === playerId
+  )
 
   // If the player is not found, return a 404 status code and a message
   if (!player) {
@@ -211,9 +210,9 @@ app.put("/questions/:questionId", async (context) => {
   // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
   
-  const question = database.questions.find(question => {
-    return question.id === questionId;
-  })
+  const question = database.questions.find(question => 
+    question.id === questionId
+  )
 
   // If the question is not found, return a 404 status code and a message
   if (!question) {
