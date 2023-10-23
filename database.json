@@ -4,8 +4,6 @@
             "nickname": "Gino",
             "player_id": 0,
             "points": 0,
-            "incorrect_answers": 0,
-            "correct_answers": 0,
             "date": "2023-10-23 9:28:25"
         }
     ],
@@ -45,48 +43,456 @@
         {
             "id": 1,
             "topic_id": 0,
-            "question": "What event marked the end of World War II in Europe?",
+            "question": "What was the main cause of the American Civil War?",
             "answer1": {
-                "text": "The fall of the Berlin Wall",
+                "text": "States' rights",
                 "id": "A"
             },
             "answer2": {
-                "text": "The signing of the Armistice of Cassibile",
+                "text": "Slavery",
                 "id": "B"
             },
             "answer3": {
-                "text": "The Battle of Stalingrad",
+                "text": "Economic differences",
                 "id": "C"
             },
             "answer4": {
-                "text": "The surrender of Nazi Germany",
+                "text": "Taxation without representation",
                 "id": "D"
             },
-            "correct_answer": "D",
+            "correct_answer": "B",
             "points": 10,
             "date": "2023-10-23 9:28:25"
         },
         {
             "id": 2,
             "topic_id": 1,
-            "question": "What event marked the end of World War II in Europe?",
+            "question": "What is the value of π (pi) to two decimal places?",
             "answer1": {
-                "text": "The fall of the Berlin Wall",
+                "text": "3.14",
                 "id": "A"
             },
             "answer2": {
-                "text": "The signing of the Armistice of Cassibile",
+                "text": "3.16",
                 "id": "B"
             },
             "answer3": {
-                "text": "The Battle of Stalingrad",
+                "text": "3.12",
                 "id": "C"
             },
             "answer4": {
-                "text": "The surrender of Nazi Germany",
+                "text": "3.20",
                 "id": "D"
             },
-            "correct_answer": "D",
+            "correct_answer": "A",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 3,
+            "topic_id": 2,
+            "question": "Which river is the longest in the world?",
+            "answer1": {
+                "text": "Amazon River",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Nile River",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Mississippi River",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Yangtze River",
+                "id": "D"
+            },
+            "correct_answer": "B",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 4,
+            "topic_id": 3,
+            "question": "What is the chemical symbol for gold?",
+            "answer1": {
+                "text": "Go",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Gd",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Au",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Ag",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 5,
+            "topic_id": 4,
+            "question": "Who is known as the 'King of Pop'?",
+            "answer1": {
+                "text": "Elvis Presley",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Michael Jackson",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Prince",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "David Bowie",
+                "id": "D"
+            },
+            "correct_answer": "B",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 6,
+            "topic_id": 5,
+            "question": "Who painted the Mona Lisa?",
+            "answer1": {
+                "text": "Leonardo da Vinci",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Pablo Picasso",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Vincent van Gogh",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Mona Lisa",
+                "id": "D"
+            },
+            "correct_answer": "A",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 7,
+            "topic_id": 6,
+            "question": "Which country won the most gold medals in the 2016 Summer Olympics?",
+            "answer1": {
+                "text": "United States",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "China",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Russia",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Great Britain",
+                "id": "D"
+            },
+            "correct_answer": "A",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 8,
+            "topic_id": 7,
+            "question": "Who is the author of the 'Harry Potter' book series?",
+            "answer1": {
+                "text": "J.R.R. Tolkien",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "George R.R. Martin",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "J.K. Rowling",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Stephen King",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 9,
+            "topic_id": 0,
+            "question": "Who was the first President of the United States?",
+            "answer1": {
+                "text": "Thomas Jefferson",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "John Adams",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "George Washington",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Benjamin Franklin",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 10,
+            "topic_id": 3,
+            "question": "What is the chemical symbol for water?",
+            "answer1": {
+                "text": "H2O",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "CO2",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "O2",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "NaCl",
+                "id": "D"
+            },
+            "correct_answer": "A",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 11,
+            "topic_id": 4,
+            "question": "Which musical instrument does Yo-Yo Ma play?",
+            "answer1": {
+                "text": "Violin",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Piano",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Cello",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Flute",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 12,
+            "topic_id": 5,
+            "question": "Who painted the Starry Night?",
+            "answer1": {
+                "text": "Pablo Picasso",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Vincent van Gogh",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Leonardo da Vinci",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Salvador Dali",
+                "id": "D"
+            },
+            "correct_answer": "B",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 13,
+            "topic_id": 6,
+            "question": "In which sport do teams compete for the Stanley Cup?",
+            "answer1": {
+                "text": "Soccer",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Basketball",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Hockey",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Baseball",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 14,
+            "topic_id": 7,
+            "question": "Which actor played the role of Iron Man in the Marvel Cinematic Universe?",
+            "answer1": {
+                "text": "Chris Hemsworth",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Mark Ruffalo",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Robert Downey Jr.",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Chris Evans",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 15,
+            "topic_id": 0,
+            "question": "Which ancient civilization built the pyramids in Egypt?",
+            "answer1": {
+                "text": "Greek",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Roman",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Egyptian",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Mayan",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 16,
+            "topic_id": 2,
+            "question": "Which two countries are connected by the Suez Canal?",
+            "answer1": {
+                "text": "France and Italy",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Canada and the United States",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Egypt and Sudan",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Greece and Turkey",
+                "id": "D"
+            },
+            "correct_answer": "C",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 17,
+            "topic_id": 3,
+            "question": "Which gas do plants absorb from the atmosphere during photosynthesis?",
+            "answer1": {
+                "text": "Oxygen",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Carbon dioxide",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Nitrogen",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Hydrogen",
+                "id": "D"
+            },
+            "correct_answer": "B",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 18,
+            "topic_id": 4,
+            "question": "Who composed the 'Moonlight Sonata'?",
+            "answer1": {
+                "text": "Wolfgang Amadeus Mozart",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "Ludwig van Beethoven",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "Johann Sebastian Bach",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "Franz Schubert",
+                "id": "D"
+            },
+            "correct_answer": "B",
+            "points": 10,
+            "date": "2023-10-23 9:28:25"
+        },
+        {
+            "id": 19,
+            "topic_id": 1,
+            "question": "What is the square root of 144?",
+            "answer1": {
+                "text": "10",
+                "id": "A"
+            },
+            "answer2": {
+                "text": "12",
+                "id": "B"
+            },
+            "answer3": {
+                "text": "8",
+                "id": "C"
+            },
+            "answer4": {
+                "text": "16",
+                "id": "D"
+            },
+            "correct_answer": "B",
             "points": 10,
             "date": "2023-10-23 9:28:25"
         }
