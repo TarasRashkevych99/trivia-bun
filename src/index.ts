@@ -40,7 +40,9 @@ app.post("/questions/:questionId/answer", async (context) => {
   // parseInt() converts the questionId parameter from url to an integer
   let questionId = parseInt(context.params.questionId);
   // find() returns the first question that satisfies the condition
-  const question = database.questions.find(question => question.id === questionId)
+  const question = database.questions.find(question => {
+    question.id === questionId
+  })
 
   // If the question is not found, return a 404 status code and a message
   if (!question) {
@@ -49,10 +51,10 @@ app.post("/questions/:questionId/answer", async (context) => {
   }
 
   // find() returns the first answer that satisfies the condition
-  const answer = database.answers.find(answer =>
+  const answer = database.answers.find(answer => {
     answer.question_id === question.id && 
     answer.player_id === PLAYER_ID
-  );
+  });
 
   // If the player has already answered this question, return a 400 status code and a message
   if (answer) {
@@ -73,7 +75,25 @@ app.post("/questions/:questionId/answer", async (context) => {
 
   await updateDatabase(database);
 
-  return question.correct_answer === answerObj.answer; // implicit 200 status code
+  const player = database.players.find(player => {
+    player.id === PLAYER_ID
+  });
+
+  if (!player){
+    context.set.status = 404;
+    return "Player not found";
+  }
+  else{
+
+    if(question.correct_answer === answerObj.answer){
+      player.points += question.points
+      return "Correct answer! You gained " + question.points + " points"; // implicit 200 status code
+    }
+    else{
+      return "Incorrect answer! Try with the next one"; // implicit 200 status code
+    }
+  }
+
 })
 
 
@@ -106,6 +126,7 @@ app.put("/players/:playerId/nickname", async (context) => {
   await updateDatabase(database);
   
   context.set.status = 204;
+  return "Nickname changend successfully"
 })
 
 //===== Exercises =====//
@@ -181,6 +202,7 @@ app.post("/questions", async (context) => {
   await updateDatabase(database);
 
   context.set.status = 201;
+  return "New question addedd successfully"
 })
 
 //===== Assignment =====//
@@ -231,6 +253,7 @@ app.put("/questions/:questionId", async (context) => {
   await updateDatabase(database);
 
   context.set.status = 204;
+  return "Question updated successfully"
 })
 
 app.listen(3000);
