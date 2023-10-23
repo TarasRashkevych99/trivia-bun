@@ -2,7 +2,7 @@
     "player": [
         {
             "nickname": "Gino",
-            "player_id": 0,
+            "id": 0,
             "points": 0,
             "date": "2023-10-23 9:28:25"
         }
