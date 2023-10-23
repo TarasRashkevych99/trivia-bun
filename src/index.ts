@@ -65,7 +65,7 @@ app.post("/questions/:questionId/answer", async (context) => {
     player_id: PLAYER_ID,
     question_id: question.id,
     answer: context.body.answer, // context.body.answer is the answer passed in the request body
-    modified: getTimestamp()
+    date: getTimestamp()
   };
 
 
@@ -101,7 +101,7 @@ app.put("/players/:playerId/nickname", async (context) => {
   }
 
   player.nickname = name;
-  player.modified = getTimestamp()
+  player.date = getTimestamp()
 
   await updateDatabase(database);
   
@@ -173,7 +173,7 @@ app.post("/questions", async (context) => {
     },
     correct_answer: partialQuestion.correct_answer,
     points: partialQuestion.points,
-    modified: getTimestamp()
+    date: getTimestamp()
   };
 
   database.questions.push(newQuestion);
@@ -226,7 +226,7 @@ app.put("/questions/:questionId", async (context) => {
   question.answer4.text = partialQuestion.answerD;
   question.correct_answer = partialQuestion.correct_answer;
   question.points = partialQuestion.points;
-  question.modified = getTimestamp();
+  question.date = getTimestamp();
   
   await updateDatabase(database);
 
