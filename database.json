@@ -5,14 +5,16 @@
             "player_id": 0,
             "points": 0,
             "incorrect_answers": 0,
-            "correct_answers": 0
+            "correct_answers": 0,
+            "modified": "2023-10-23 9:28:25"
         }
     ],
     "answers": [
         {
             "player_id": 0,
             "question_id": 0,
-            "answer": "A"
+            "answer": "A",
+            "modified": "2023-10-23 9:24:25"
         }
     ],
     "questions": [
@@ -37,7 +39,8 @@
                 "id": "D"
             },
             "correct_answer": "D",
-            "points": 10
+            "points": 10,
+            "modified": "2023-10-23 9:28:25"
         },
         {
             "id": 1,
@@ -60,7 +63,8 @@
                 "id": "D"
             },
             "correct_answer": "D",
-            "points": 10
+            "points": 10,
+            "modified": "2023-10-23 9:28:25"
         },
         {
             "id": 2,
@@ -83,7 +87,8 @@
                 "id": "D"
             },
             "correct_answer": "D",
-            "points": 10
+            "points": 10,
+            "modified": "2023-10-23 9:28:25"
         }
     ],
     "topics": [

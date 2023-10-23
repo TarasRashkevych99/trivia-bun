@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Elysia } from "elysia";
-import { getDatabase, updateDatabase, PLAYER_ID } from "./utils";
+import { getDatabase, updateDatabase, getTimestamp, PLAYER_ID} from "./utils";
 
 const app = new Elysia();
 
@@ -64,8 +64,10 @@ app.post("/questions/:questionId/answer", async (context) => {
   const answerObj = {
     player_id: PLAYER_ID,
     question_id: question.id,
-    answer: context.body.answer // context.body.answer is the answer passed in the request body
+    answer: context.body.answer, // context.body.answer is the answer passed in the request body
+    modified: getTimestamp()
   };
+
 
   database.answers.push(answerObj);
 
@@ -99,6 +101,7 @@ app.put("/players/:playerId/nickname", async (context) => {
   }
 
   player.nickname = name;
+  player.modified = getTimestamp()
 
   await updateDatabase(database);
   
@@ -138,7 +141,7 @@ app.post("/questions", async (context) => {
     answerC: context.body?.answerC,
     answerD: context.body?.answerD,
     correct_answer: context.body?.correct_answer,
-    points: context.body?.points
+    points: context.body?.points,
   };
 
   // If any of the fields are undefined, return a 400 status code and a message
@@ -169,7 +172,8 @@ app.post("/questions", async (context) => {
       id: "D"
     },
     correct_answer: partialQuestion.correct_answer,
-    points: partialQuestion.points
+    points: partialQuestion.points,
+    modified: getTimestamp()
   };
 
   database.questions.push(newQuestion);
@@ -222,6 +226,7 @@ app.put("/questions/:questionId", async (context) => {
   question.answer4.text = partialQuestion.answerD;
   question.correct_answer = partialQuestion.correct_answer;
   question.points = partialQuestion.points;
+  question.modified = getTimestamp();
   
   await updateDatabase(database);
 
