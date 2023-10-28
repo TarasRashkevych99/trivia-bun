@@ -1,7 +1,7 @@
-import Bun from 'bun';
+import Bun from "bun";
 
 const PLAYER_ID = 0;
-const DATABASE_PATH = "database.json"
+const DATABASE_PATH = "database.json";
 
 async function getDatabase() {
     const dbFile = Bun.file(DATABASE_PATH);
@@ -14,16 +14,11 @@ async function updateDatabase(database: any) {
     await Bun.write(dbFile, updatedJson);
 }
 
-function getTimestamp(){
+function getTimestamp() {
     const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    return date+' '+time;
+    const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+    return `${date} ${time}`;
 }
 
-export {
-    PLAYER_ID,
-    getDatabase,
-    updateDatabase,
-    getTimestamp
-}
+export { PLAYER_ID, getDatabase, updateDatabase, getTimestamp };
