@@ -477,7 +477,7 @@
         },
         {
             "id": 20,
-            "topic_id": 1,
+            "topic_id": 3,
             "question": "Which is the acronym for the course Service Design and Engineering?",
             "answer1": {
                 "text": "DDE",
@@ -495,7 +495,7 @@
                 "text": "Chainge with correct answer",
                 "id": "D"
             },
-            "correct_answer": "C",
+            "correct_answer": "D",
             "date": "2023-10-23 9:28:25"
         }
     ],
