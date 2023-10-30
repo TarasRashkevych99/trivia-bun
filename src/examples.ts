@@ -71,8 +71,7 @@ examples.post("/questions/:questionId/answer", async (context) => {
         // If the player is found, update the points if the answer is correct
         let res;
         if (question.correct_answer === answerObj.answer) {
-            player.points += question.points;
-            res = `Correct answer! You gained ${question.points} points`; // implicit 200 status code
+            res = `Correct answer!`; // implicit 200 status code
         } else {
             res = "Incorrect answer! Try with the next one"; // implicit 200 status code
         }

@@ -34,7 +34,6 @@ exercises.post("/questions", async (context) => {
         answerC: context.body?.answerC,
         answerD: context.body?.answerD,
         correct_answer: context.body?.correct_answer,
-        points: context.body?.points,
     };
 
     // If any of the fields are undefined, return a 400 status code and a message
