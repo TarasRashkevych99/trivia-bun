@@ -68,7 +68,6 @@ examples.post("/questions/:questionId/answer", async (context) => {
         context.set.status = 404;
         return "Player not found";
     } else {
-        // If the player is found, update the points if the answer is correct
         let res;
         if (question.correct_answer === answerObj.answer) {
             res = `Correct answer!`; // implicit 200 status code
