@@ -9,15 +9,18 @@ const database = await getDatabase();
 // Update the question with the specified ID
 assignment.put("/questions/:questionId", async (context) => {
     // parseInt() converts the questionId parameter from url to an integer
+    // without checking if the parsing has been executed successfully.
+    // In real case scenarios you should always check it
     let questionId = parseInt(context.params.questionId);
 
-    // Get from the database the question that has the same ID
-    // as the questionId parameter (remember the find method)
+    // Get from the database the question that has the same ID as the questionId parameter
+    // The same as the line 39 in the example of the endpoint POST /questions/:questionId/answer
 
     // If the question is not found, return a 404 status code and an error message
+    // The same as the lines from 42 to 45 in the example of the endpoint POST /questions/:questionId/answer
 
     // Check if the request body contains all the required fields
-    const partialQuestion = {
+    const body = {
         topicId: context.body?.topicId,
         question: context.body?.question,
         answerA: context.body?.answerA,
@@ -28,17 +31,27 @@ assignment.put("/questions/:questionId", async (context) => {
     };
 
     // If any of the fields are undefined, return a 400 status code and a message
-    if (Object.values(partialQuestion).includes(undefined)) {
+    if (Object.values(body).includes(undefined)) {
         context.set.status = 400;
         return "Invalid question";
     }
 
-    // Update the question that you retrieved from the database with the new values (remember to set the date)
+    // Update the question with the new values
+    question.topic_id = body.topicId;
+    question.question = body.question;
+    question.answer1.text = body.answerA;
+    // question.answer2.text = <get answerB from body>;
+    // question.answer3.text = <get answerC from body>;
+    // question.answer4.text = <get answerD from body>;
+    question.correct_answer = body.correct_answer;
+    question.date = getTimestamp();
 
     // Update the database
+    // The same as the line 72 in the example of the endpoint POST /questions/:questionId/answer
 
-    // Set the correct status code (the one normally used for responses with no body to successful PUT requests)
-    // and return an informative message
+    // Set the correct status code and return an informative message
+    // The same as the lines 115 and 116 in the example of the endpoint POST /questions/:questionId/answer.
+    // The message could be anything you want.
 });
 
 export default assignment;

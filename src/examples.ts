@@ -6,13 +6,15 @@ const examples = new Elysia();
 
 const database = await getDatabase();
 
-examples.get("/questions", async (context) => {
+examples.get("/questions", (context) => {
     // Return all questions
     return database.questions; // implicit 200 status code
 });
 
-examples.get("/questions/:questionId", async (context) => {
+examples.get("/questions/:questionId", (context) => {
     // parseInt() converts the questionId parameter from url to an integer
+    // without checking if the parsing has been executed successfully.
+    // In real case scenarios you should always check it
     let questionId = parseInt(context.params.questionId);
 
     // find() returns the first question that has the same ID as the questionId parameter
@@ -29,7 +31,10 @@ examples.get("/questions/:questionId", async (context) => {
 
 examples.post("/questions/:questionId/answer", async (context) => {
     // parseInt() converts the questionId parameter from url to an integer
+    // without checking if the parsing has been executed successfully.
+    // In real case scenarios you should always check it
     let questionId = parseInt(context.params.questionId);
+
     // find() returns the first question that has the same ID as the questionId parameter
     const question = database.questions.find((question) => question.id === questionId);
 
@@ -59,28 +64,27 @@ examples.post("/questions/:questionId/answer", async (context) => {
         date: getTimestamp(),
     };
 
+    // inserts the answer given by the user into the set of all other answers
     database.answers.push(answerObj);
 
-    const player = database.player.find((player) => player.id === PLAYER_ID);
+    // Updates the database without cheching if the operation has been executed successfully.
+    // In real case scenarios you should always check it
+    await updateDatabase(database);
 
-    // If the player is not found, return a 404 status code and a message
-    if (!player) {
-        context.set.status = 404;
-        return "Player not found";
+    let res;
+    if (question.correct_answer === answerObj.answer) {
+        res = `Correct answer!`; // implicit 200 status code
     } else {
-        let res;
-        if (question.correct_answer === answerObj.answer) {
-            res = `Correct answer!`; // implicit 200 status code
-        } else {
-            res = "Incorrect answer! Try with the next one"; // implicit 200 status code
-        }
-        await updateDatabase(database);
-        return res;
+        res = "Incorrect answer! Try with another question"; // implicit 200 status code
     }
+
+    return res;
 });
 
 examples.put("/players/:playerId/nickname", async (context) => {
     // parseInt() converts the playerId parameter from url to an integer
+    // without checking if the parsing has been executed successfully.
+    // In real case scenarios you should always check it
     let playerId = parseInt(context.params.playerId);
 
     // find() returns the first player that satisfies the condition
@@ -97,12 +101,15 @@ examples.put("/players/:playerId/nickname", async (context) => {
     // If the name is not passed in the body, return a 400 status code and a message
     if (!name) {
         context.set.status = 400;
-        return "Nickname not found";
+        return "No nickname has been passed";
     }
 
+    // Updates the user's properties with the new data
     player.nickname = name;
     player.date = getTimestamp();
 
+    // Updates the database without cheching if the operation has been executed successfully.
+    // In real case scenarios you should always check it
     await updateDatabase(database);
 
     context.set.status = 204;
