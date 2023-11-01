@@ -53,7 +53,6 @@ assignment.put("/questions/:questionId", async (context) => {
     // .....
 
     // Set the correct status code and return an informative message
-    // Look at the example of the endpoint POST /questions/:questionId/answer
     // .....
 });
 
