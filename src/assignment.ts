@@ -13,11 +13,13 @@ assignment.put("/questions/:questionId", async (context) => {
     // In real case scenarios you should always check it
     let questionId = parseInt(context.params.questionId);
 
-    // Get from the database the question that has the same ID as the questionId parameter
-    // The same as the line 39 in the example of the endpoint POST /questions/:questionId/answer
+    // Get from the database the question with the specified questionId
+    // Take a look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 
     // If the question is not found, return a 404 status code and an error message
-    // The same as the lines from 42 to 45 in the example of the endpoint POST /questions/:questionId/answer
+    // Look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 
     // Check if the request body contains all the required fields
     const body = {
@@ -47,11 +49,12 @@ assignment.put("/questions/:questionId", async (context) => {
     question.date = getTimestamp();
 
     // Update the database
-    // The same as the line 72 in the example of the endpoint POST /questions/:questionId/answer
+    // Look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 
     // Set the correct status code and return an informative message
-    // The same as the lines 115 and 116 in the example of the endpoint POST /questions/:questionId/answer.
-    // The message could be anything you want.
+    // Look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 });
 
 export default assignment;

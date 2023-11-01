@@ -8,7 +8,8 @@ const database = await getDatabase();
 
 // Return all topics
 exercises.get("/topics", (context) => {
-    // Almost the same as the line 11 in the example of the endpoint GET /questions
+    // Take a look at the example of the endpoint GET /questions
+    // .....
 });
 
 // Return all questions that belong to the topic with the topicId
@@ -17,6 +18,14 @@ exercises.get("/topics/:topicId/questions", async (context) => {
     // without checking if the parsing has been executed successfully.
     // In real case scenarios you should always check it
     let topicId = parseInt(context.params.topicId);
+
+    // Get from the database the topic with the specified topicId (use the find() method as
+    // in the example of the endpoint GET /questions/:questionId)
+    // .....
+
+    // If the topic is not found, return a 404 status code and a message (look at the example of the
+    // endpoint GET /questions/:questionId)
+    // .....
 
     // The filter() method is similar to the find() method used in the examples but it returns multiple
     // elements that satisfy a particular condition. In this case it should return all thoose questions
@@ -27,6 +36,7 @@ exercises.get("/topics/:topicId/questions", async (context) => {
     // const questions = database.questions.filter((question) => <put here the condition>);
 
     // return the questions
+    // .....
 });
 
 // Create a new question
@@ -77,15 +87,16 @@ exercises.post("/questions", async (context) => {
     };
 
     // Insert the new question into the database
-    // Almost the same as the line 67 in the example of the endpoint POST /questions/:questionId/answer
-    // except that here we are talking about questions
+    // Take a look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 
     // Update the database
-    // The same as the line 72 in the example of the endpoint POST /questions/:questionId/answer
+    // Take a look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 
     // Set the correct status code and return an informative message
-    // Almost the same as the lines 115 and 116 in the example of the endpoint POST /questions/:questionId/answer
-    // except that the status code should be the one normally used for creation and the message should be different (anything you want).
+    // Take a look at the example of the endpoint POST /questions/:questionId/answer
+    // .....
 });
 
 export default exercises;
