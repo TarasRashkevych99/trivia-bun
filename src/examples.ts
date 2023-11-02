@@ -73,7 +73,7 @@ examples.post("/questions/:questionId/answer", async (context) => {
 
     let res;
     if (question.correct_answer === answerObj.answer) {
-        res = `Correct answer!`; // implicit 200 status code
+        res = "Correct answer!"; // implicit 200 status code
     } else {
         res = "Incorrect answer! Try with another question"; // implicit 200 status code
     }
@@ -113,7 +113,7 @@ examples.put("/players/:playerId/nickname", async (context) => {
     await updateDatabase(database);
 
     context.set.status = 204;
-    return "Nickname changend successfully";
+    return "Nickname changed successfully";
 });
 
 export default examples;
